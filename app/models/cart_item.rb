@@ -34,6 +34,7 @@ class CartItem < ApplicationRecord
   after_create :reduce_item_from_the_stock
 
   delegate :name, :price, to: :item
+  delegate :quantity, to: :item, prefix: :stock
 
   def remove_from_cart
     add_item_back_to_the_stock
@@ -45,29 +46,33 @@ class CartItem < ApplicationRecord
   def update_stock_quantity
     return unless quantity_changed?
 
-    quantity_was > quantity ? add_item_back_to_the_stock : reduce_item_from_the_stock
+    return_amount = quantity_was - quantity
+    take_amount = quantity - quantity_was
+
+    quantity_was > quantity ? add_item_back_to_the_stock(return_amount) : reduce_item_from_the_stock(take_amount)
+  end
+
+  def add_item_back_to_the_stock(amount = quantity)
+    new_quantity = stock_quantity + amount
+    item.update(quantity: new_quantity)
+  end
+
+  def reduce_item_from_the_stock(amount = quantity)
+    new_quantity = stock_quantity - amount
+
+    throw_error if new_quantity.negative?
+
+    item.update(quantity: new_quantity)
   end
 
   def item_exists_in_stock?
-    return true if item.quantity >= quantity
+    return true if stock_quantity >= quantity
 
-    errors.add(:quantity, 'is greater than the stock')
+    throw_error
+  end
+
+  def throw_error
+    errors.add(:quantity)
     throw(:abort)
-  end
-
-  def reduce_item_from_the_stock
-    return throw(:abort) unless item.quantity + quantity_was >= quantity
-
-    reduce_amount = quantity_changed? ? quantity - quantity_was : quantity
-    new_quantity = item.quantity - reduce_amount
-
-    item.update(quantity: new_quantity)
-  end
-
-  def add_item_back_to_the_stock
-    return_amount = quantity_changed? ? quantity_was - quantity : quantity
-    new_quantity = item.quantity + return_amount
-
-    item.update(quantity: new_quantity)
   end
 end
