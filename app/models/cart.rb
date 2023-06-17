@@ -22,9 +22,24 @@ class Cart < ApplicationRecord
   has_many :cart_items, dependent: :destroy
 
   validates :user, presence: true
-  validates :cart_items, presence: true, optional: true
+
+  def checkout
+    CartItem.transaction do
+      cart_items.each do |cart_item|
+        BoughtItem.create!(item: cart_item.item, quantity: cart_item.quantity, user:, cart: self)
+      end
+
+      cart_items.destroy_all
+    end
+  end
 
   def total
-    cart_items.sum(:price)
+    cart_items.includes(:item).map { |cart_item| calculate_item_total(cart_item) }.sum
+  end
+
+  private
+
+  def calculate_item_total(cart_item)
+    cart_item.quantity * cart_item.item.price
   end
 end

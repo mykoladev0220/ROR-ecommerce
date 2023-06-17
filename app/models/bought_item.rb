@@ -28,4 +28,12 @@ class BoughtItem < ApplicationRecord
   belongs_to :user
   belongs_to :cart
   belongs_to :item
+
+  has_many :cart_items, through: :cart
+  has_many :items, through: :cart_items
+
+  validates :quantity, numericality: { greater_than_or_equal_to: 0 }
+  validates :item, presence: true
+  validates :user, presence: true
+  validates :cart, presence: true
 end
