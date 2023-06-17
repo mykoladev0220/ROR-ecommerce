@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CartItemsController < ApplicationController
   before_action :find_cart_item
 
@@ -6,18 +8,18 @@ class CartItemsController < ApplicationController
   def create
     card_item = CartItem.create(cart_item_params)
     if card_item.valid?
-      flash[:notice] = "Item added to cart"
+      flash[:notice] = 'Item added to cart'
     else
-      flash[:alert] = "Item not added to cart"
+      flash[:alert] = 'Item not added to cart'
     end
     redirect_to cart_path
   end
 
   def update
     if cart_item.update(quantity: params[:cart_item][:quantity])
-      flash[:notice] = "Cart item updated"
+      flash[:notice] = 'Cart item updated'
     else
-      flash[:alert] = "Cart item not updated"
+      flash[:alert] = 'Cart item not updated'
     end
 
     redirect_to cart_path
@@ -25,9 +27,9 @@ class CartItemsController < ApplicationController
 
   def destroy
     if cart_item.remove_from_cart
-      flash[:notice] = "Cart item deleted"
+      flash[:notice] = 'Cart item deleted'
     else
-      flash[:alert] = "Cart item not deleted"
+      flash[:alert] = 'Cart item not deleted'
     end
 
     redirect_to cart_path
@@ -37,9 +39,9 @@ class CartItemsController < ApplicationController
 
   def find_cart_item
     @cart_item = if params[:id].present?
-                  CartItem.find_by(id: params[:id])
+                   CartItem.find_by(id: params[:id])
                  else
-                  CartItem.find_by(cart_item_params.except(:quantity))
+                   CartItem.find_by(cart_item_params.except(:quantity))
                  end
   end
 

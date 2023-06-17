@@ -6,11 +6,11 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
-  resources :items, only: [:index, :show]
+  resources :items, only: %i[index show]
 
-  resources :cart_items, only: [:create, :update, :destroy]
+  resources :cart_items, only: %i[create update destroy]
 
-  resource :cart, only: [:show, :update] do
+  resource :cart, only: %i[show update] do
     post :checkout
   end
 
