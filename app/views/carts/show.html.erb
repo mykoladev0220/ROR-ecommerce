@@ -1,0 +1,19 @@
+<h2>My cart</h2>
+
+<h3>Cart total: <%= @cart.total %></h3>
+
+<% @cart_items.each do |cart_item| %>
+  <p>Item: <%= cart_item.item.name %></p>
+  <p>Price: <%= cart_item.price %></p>
+  <p>Quantity in cart: <%= cart_item.quantity %></p>
+
+  <%= simple_form_for cart_item do |f| %>
+    <%= f.input :quantity, as: :numeric, input_html: { min: '1' } %>
+    <%= f.button :submit %>
+  <% end %>
+  |
+  <%= button_to "Remove from cart", cart_item, method: :delete %>
+
+  <br>----
+
+<% end %>

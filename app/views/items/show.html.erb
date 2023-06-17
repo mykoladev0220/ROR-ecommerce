@@ -1,0 +1,19 @@
+<h1><%= @item.name %></h1>
+<p>Price: <%= @item.price %></p>
+<p>Stock: <%= @item.quantity %> left</p>
+<p>Description: <%= @item.description %></p>
+
+<% if @cart_item.persisted? %>
+  <h3> Item already in cart </h3>
+  <%= link_to "Go to cart", cart_path %>
+  <%= simple_form_for @cart_item do |f| %>
+    <%= f.input :quantity, as: :numeric, input_html: { min: '1' } %>
+    <%= f.button :submit %>
+  <% end %>
+<% else %>
+  <%= simple_form_for @cart_item, method: :post do |f| %>
+    <%= f.hidden_field :item_id, value: @item.id %>
+    <%= f.button :submit, 'Add item to cart', disabled: @item.quantity.zero? %>
+  <% end %>
+<% end %>
+
