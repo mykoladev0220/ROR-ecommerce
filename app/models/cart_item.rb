@@ -44,6 +44,10 @@ class CartItem < ApplicationRecord
     destroy
   end
 
+  def subtotal
+    price * quantity
+  end
+
   private
 
   def update_stock_quantity
