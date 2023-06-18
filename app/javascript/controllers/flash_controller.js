@@ -6,6 +6,6 @@ export default class extends Controller {
 
     setTimeout(() => {
       flash.remove();
-    }, 3000);
+    }, 3500);
   }
 }
