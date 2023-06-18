@@ -25,7 +25,10 @@
 require 'test_helper'
 
 class CartItemTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'cart item has a cart and an item' do
+    cart_item = CartItem.create(cart: carts(:one), item: items(:ruby_book), quantity: 1)
+
+    assert_not_nil cart_item.cart
+    assert_not_nil cart_item.item
+  end
 end
