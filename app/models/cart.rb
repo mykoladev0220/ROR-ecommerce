@@ -23,12 +23,14 @@ class Cart < ApplicationRecord
 
   validates :user, presence: true
 
+  # TODO: Might use bulk insert here.
   def checkout
     CartItem.transaction do
       cart_items.each do |cart_item|
         BoughtItem.create!(item: cart_item.item, quantity: cart_item.quantity, user:, cart: self)
       end
 
+      # We want to destroy all cart items without adding them back to the stock.
       cart_items.destroy_all
     end
   end

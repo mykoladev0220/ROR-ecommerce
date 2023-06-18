@@ -36,6 +36,9 @@ class CartItem < ApplicationRecord
   delegate :name, :price, to: :item
   delegate :quantity, to: :item, prefix: :stock
 
+  # The reason there is no callback for the destroy method is
+  # because we don't want to add the item back to the stock
+  # if the cart item is destroyed when checkout is called.
   def remove_from_cart
     add_item_back_to_the_stock
     destroy

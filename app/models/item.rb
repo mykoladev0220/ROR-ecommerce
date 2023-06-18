@@ -21,4 +21,8 @@ class Item < ApplicationRecord
   validates :quantity, numericality: { greater_than_or_equal_to: 0 }
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :name, presence: true, uniqueness: true
+
+  def self.total_stock_count
+    Item.sum(:quantity)
+  end
 end

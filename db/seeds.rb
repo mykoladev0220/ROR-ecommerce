@@ -8,6 +8,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+User.create(name: 'user2', email: 'test@mail.com', password: 'password', password_confirmation: 'password')
+
 first_user = User.create(name: 'user', email: 'user@mail.com', password: 'password', password_confirmation: 'password')
 
 ruby_book = Item.create(name: 'ruby book', price: 50, quantity: 3, code: 'ruby_2023', description: 'book')
