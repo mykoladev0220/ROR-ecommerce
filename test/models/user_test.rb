@@ -33,7 +33,18 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'user has a cart on create' do
+    tester = User.create(name: 'test', email: 'test@user.com', password: 'password', password_confirmation: 'password')
+
+    assert_not_nil tester.name
+    assert_not_nil tester.cart
+  end
+
+  test 'user cart and cart items are destroyed when user is destroyed' do
     assert_not_nil user.cart
+
+    user.destroy
+
+    assert_nil Cart.find_by(id: user.cart.id)
   end
 
   test 'user can add item to cart and reduce from the stock' do
@@ -50,7 +61,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 0, cart.cart_items.count
     assert_equal 3, iphone.reload.quantity
 
-    assert_equal 'Quantity is greater than the stock', create.errors.full_messages.first
+    assert_equal 'Quantity is invalid', create.errors.full_messages.first
   end
 
   test 'user can update the quantity of an item in the cart' do
