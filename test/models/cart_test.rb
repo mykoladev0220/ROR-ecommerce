@@ -20,7 +20,38 @@
 require 'test_helper'
 
 class CartTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  attr_accessor :user, :cart
+
+  setup do
+    @user = users(:one)
+    @cart = carts(:one)
+  end
+
+  test 'cart has a user' do
+    assert_not_nil cart.user
+  end
+
+  test 'cart has cart items' do
+    cart.cart_items.create(item: items(:ruby_book), quantity: 1)
+
+    assert_not_nil cart.cart_items
+  end
+
+  test 'cart has a total' do
+    cart.cart_items.create(item: items(:ruby_book), quantity: 1)
+    cart.cart_items.create(item: items(:iphone), quantity: 1)
+
+    assert_equal 150, cart.total
+  end
+
+  test 'cart can checkout' do
+    cart.cart_items.create(item: items(:iphone), quantity: 1)
+
+    assert_difference 'BoughtItem.count', 1 do
+      cart.checkout
+    end
+
+    assert_equal 0, cart.total
+    assert_equal 0, cart.cart_items.count
+  end
 end
