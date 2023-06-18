@@ -1,19 +1,18 @@
-<h2>My cart</h2>
+  <h1>Cart</h1>
 
-<h3>Cart total: <%= @cart.total %></h3>
+  <p class="notice">
+   Cart total: $<%= @cart.total %>
+  </p>
 
 <% @cart_items.each do |cart_item| %>
-  <p>Item: <%= cart_item.item.name %></p>
-  <p>Price: <%= cart_item.price %></p>
-  <p>Quantity in cart: <%= cart_item.quantity %></p>
+  <article>
+    <h3><%= link_to cart_item.item.name, item_path(cart_item.item) %></h3>
+    <p><b>Price:</b> $<%= cart_item.item.price %></p>
+    <p><b>Description:</b> <%= cart_item.item.description %></p>
+    <p><b>Quantity:</b> <%= cart_item.quantity %></p>
+    <p><b>Subtotal:</b> $<%= cart_item.subtotal %></p>
+    <%= button_to "Remove from cart", cart_item, method: :delete %>
 
-  <%= simple_form_for cart_item do |f| %>
-    <%= f.input :quantity, as: :numeric, input_html: { min: '1' } %>
-    <%= f.button :submit %>
-  <% end %>
-  |
-  <%= button_to "Remove from cart", cart_item, method: :delete %>
-
-  <br>----
-
+    <%= render 'layouts/quantity_form', cart_item: cart_item %>
+  </article>
 <% end %>

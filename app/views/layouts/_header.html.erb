@@ -1,16 +1,18 @@
 <%# When no one is signed in %>
-<% unless user_signed_in? %>
-  <%= link_to "Log in",  new_user_session_path %>
-  <%= link_to "Sign up",  new_user_registration_path %>
-<% end %>
+<header>
+  <nav class="links-and-buttons">
+    <% unless user_signed_in? %>
+      <%= link_to "Log in",  new_user_session_path %>
+      <%= link_to "Sign up",  new_user_registration_path %>
+    <% end %>
 
 
-<%# When user signed in %>
-<% if current_user %>
-  <%= button_to "Log out", destroy_user_session_path, method: :delete  %>
-  <%= link_to "Edit profile", edit_user_registration_path %>
-  |
-  <%= link_to "All Items", items_path %>
-  |
-  <%= link_to "Go to Cart - #{current_user.cart_items.sum(:quantity)} items", cart_path %>
-<% end %>
+    <%# When user signed in %>
+    <% if current_user %>
+      <%= link_to "Edit profile", edit_user_registration_path %>
+      <%= link_to "All Items", items_path %>
+      <%= link_to "Go to Cart - #{current_user.cart_items.sum(:quantity)} items", cart_path %>
+      <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+    <% end %>
+  </nav>
+</header>

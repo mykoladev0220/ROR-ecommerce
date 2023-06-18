@@ -1,10 +1,6 @@
-<h2>Buy products</h2>
+<h1>All Items</h1>
+<h4>Buy products</h4>
 
 <% @items.each do |item| %>
-  <h3><%= item.name %></h3>
-  <p>Price: <%= item.price %></p>
-  <p>Stock: <%= item.quantity %> left</p>
-  <p>Description: <%= item.description %></p>
-  <%= link_to "Go to Product", item_path(item) %>
-  <hr>
+  <%= render "layouts/item", item: item %>
 <% end %>
