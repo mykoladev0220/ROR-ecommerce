@@ -16,7 +16,7 @@
 require 'test_helper'
 
 class ItemTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'test total quantity of all items' do
+    assert_equal 9, Item.total_stock_count
+  end
 end
