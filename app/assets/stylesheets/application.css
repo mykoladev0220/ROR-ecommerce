@@ -13,3 +13,65 @@
  *= require_tree .
  *= require_self
  */
+
+/* Override some default simplecss metrics */
+
+h3 {
+  margin-top: 0.5em;
+}
+
+header > nav a,
+header > nav a:visited {
+  margin: 0;
+}
+
+.button,
+a.button,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+label[type="button"] {
+  margin: 0;
+  padding: 0.5em 1em;
+}
+
+nav {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  justify-content: center;
+}
+
+mark {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+input[type="number"] {
+  margin-bottom: 0;
+}
+
+article {
+  margin-bottom: 2em;
+}
+
+.spaced-out {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 1rem;
+}
+
+.quantity-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1em;
+  align-items: center;
+}
+
+.p-1 {
+  padding-top: 2em;
+  padding-bottom: 0.5em;
+}
