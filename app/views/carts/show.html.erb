@@ -1,19 +1,15 @@
 <h1>Cart</h1>
 
 <div class="notice">
-  Cart total: $<%= @cart.total %>
+  <p><b> Cart total:</b> $<%= @cart.total %> </p>
+  
   <%= link_to "Go to checkout", checkout_cart_path if @cart_items.any? %>
 </div>
 
 <% @cart_items.each do |cart_item| %>
   <article>
-    <h3><%= link_to cart_item.item.name, item_path(cart_item.item) %></h3>
-    <p><b>Price:</b> $<%= cart_item.item.price %></p>
-    <p><b>Description:</b> <%= cart_item.item.description %></p>
-    <p><b>Quantity:</b> <%= cart_item.quantity %></p>
-    <p><b>Subtotal:</b> $<%= cart_item.subtotal %></p>
+    <%= render "layouts/relational_item", relational_item: cart_item %>
     <%= button_to "Remove from cart", cart_item, method: :delete %>
-
     <%= render 'layouts/quantity_form', cart_item: cart_item %>
   </article>
 <% end %>

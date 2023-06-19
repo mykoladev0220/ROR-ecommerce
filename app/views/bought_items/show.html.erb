@@ -6,11 +6,7 @@
 
 <% @bought_items.each do |bought_item| %>
   <article>
-    <h3><%= link_to bought_item.item.name, item_path(bought_item.item) %></h3>
-    <p><b>Price:</b> $<%= bought_item.item.price %></p>
-    <p><b>Description:</b> <%= bought_item.item.description %></p>
-    <p><b>Quantity:</b> <%= bought_item.quantity %></p>
-    <p><b>Subtotal:</b> $<%= bought_item.subtotal %></p>
+    <%= render "layouts/relational_item", relational_item: bought_item %>
     <p><b>Transaction date:</b> <%= bought_item.created_at.strftime("%H:%M - %B %d, %Y") %></p>
   </article>
 <% end %>
