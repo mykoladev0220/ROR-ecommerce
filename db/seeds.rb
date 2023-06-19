@@ -16,6 +16,6 @@ ruby_book = Item.create(name: 'ruby book', price: 50, quantity: 3, code: 'ruby_2
 iphone = Item.create(name: 'iphone', price: 100, quantity: 3, code: 'iphone14_2023', description: 'smartphone')
 bugatti = Item.create(name: 'bugatti', price: 999, quantity: 3, code: 'bugatti_2023', description: 'car')
 
-CartItem.create(user: first_user, item: ruby_book, quantity: 1, cart: first_user.cart)
-CartItem.create(user: first_user, item: iphone, quantity: 1, cart: first_user.cart)
-BoughtItem.create(user: first_user, item: bugatti, quantity: 1, cart: first_user.cart)
+CartItem.create(item: ruby_book, quantity: 1, cart: first_user.cart)
+CartItem.create(item: iphone, quantity: 1, cart: first_user.cart)
+BoughtItem.create(item: bugatti, quantity: 1, cart: first_user.cart)

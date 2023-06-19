@@ -36,4 +36,8 @@ class BoughtItem < ApplicationRecord
   validates :item, presence: true
   validates :user, presence: true
   validates :cart, presence: true
+
+  def subtotal
+    item.price * quantity
+  end
 end

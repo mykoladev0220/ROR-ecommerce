@@ -1,0 +1,16 @@
+<h1>Bought Items</h1>
+
+<div class="notice">
+  <p><b>Total Spending:</b> $<%= @bought_items.map { |bought_item| bought_item.subtotal }.sum %></p>
+</div>
+
+<% @bought_items.each do |bought_item| %>
+  <article>
+    <h3><%= link_to bought_item.item.name, item_path(bought_item.item) %></h3>
+    <p><b>Price:</b> $<%= bought_item.item.price %></p>
+    <p><b>Description:</b> <%= bought_item.item.description %></p>
+    <p><b>Quantity:</b> <%= bought_item.quantity %></p>
+    <p><b>Subtotal:</b> $<%= bought_item.subtotal %></p>
+    <p><b>Transaction date:</b> <%= bought_item.created_at.strftime("%H:%M - %B %d, %Y") %></p>
+  </article>
+<% end %>

@@ -16,7 +16,7 @@ class CheckoutController < ApplicationController
     if validate_params
       current_user_cart.checkout
       flash[:notice] = 'Checkout successful.'
-      redirect_to bought_items_path
+      redirect_to bought_item_path(current_user)
     else
       flash[:alert] = 'Try again later or contact support.'
       redirect_to cart_path

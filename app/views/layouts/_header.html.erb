@@ -12,6 +12,7 @@
       <%= link_to "Edit profile", edit_user_registration_path %>
       <%= link_to "All Items", items_path %>
       <%= link_to "Go to Cart - #{current_user.cart_items.sum(:quantity)} items", cart_path %>
+      <%= link_to "Bought Items - #{current_user.bought_items.sum(:quantity)} items", bought_item_path(current_user) %>
       <%= button_to "Log out", destroy_user_session_path, method: :delete %>
     <% end %>
   </nav>

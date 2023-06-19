@@ -15,5 +15,5 @@ Rails.application.routes.draw do
     post 'checkout', to: 'checkout#create'
   end
 
-  resources :bought_items, only: [:index]
+  resources :bought_items, only: :show
 end
