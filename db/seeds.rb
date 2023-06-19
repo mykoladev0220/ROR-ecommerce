@@ -28,7 +28,6 @@ iphone = Item.create(name: 'iphone',
                      'But if you are one of the 0.1% of people who can afford it, do not hesitate to buy it. '\
                      '24 GB of RAM, 1TB of storage, 1000MP camera, 10000mAh battery, 1000Hz screen refresh rate.')
 
-
 bugatti = Item.create(name: 'bugatti', price: 999, quantity: 3, code: 'car',
                       description: 'This is Bugatti, the best car in the world. '\
                       'Very expensive and not everyone can afford it, but if you can, do not hesitate to buy it. '\
