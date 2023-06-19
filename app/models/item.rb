@@ -21,6 +21,13 @@ class Item < ApplicationRecord
   validates :quantity, numericality: { greater_than_or_equal_to: 0 }
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :name, presence: true, uniqueness: true
+  validates :description, presence: true, length: { maximum: 1000 }
+
+  after_update :broadcast_update
+
+  def broadcast_update
+    broadcast_replace_to 'items', target: id, partial: 'layouts/partials/item', locals: { item: self }
+  end
 
   def self.total_stock_count
     Item.sum(:quantity)
