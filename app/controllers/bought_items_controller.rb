@@ -3,6 +3,7 @@
 class BoughtItemsController < ApplicationController
   def show
     @bought_items = current_user_bought_items
+    @total_spending = @bought_items.map(&:subtotal).sum
   end
 
   private
