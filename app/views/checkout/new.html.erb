@@ -1,0 +1,15 @@
+<h1>Checkout</h1>
+
+<article>
+  <%= simple_form_for :checkout, path: checkout_cart_path(@cart), html: { novalidate: false } do |f| %>
+    <h4>Billing Information</h4>
+    <section>
+    <%= f.input :cart_number, required: true, as: :integer, input_html: { min: 1000000000000000, max: 9999999999999999, value: 4242424242424242 } %>
+    <%= f.input :cart_expiration_month, label: "Expiration month", required: true, as: :integer, input_html: { min: 1, max: 12, value: Date.today.month } %>
+    <%= f.input :cart_expiration_year, label: "Expiration year", required: true, as: :integer, input_html: { min: Date.today.year, max: Date.today.year + 10, value: Date.today.year } %>
+    <%= f.input :cart_cvv, label: "CVV", input_html: { value: 123, min: 100, max: 999 }, required: true, as: :integer %>
+    <%= f.input :shipping_address, as: :text, required: true, input_html: { value: "123 Main St" } %>
+    <%= f.button :submit, "Submit Payment" %>
+    </section>
+  <% end %>
+</article>

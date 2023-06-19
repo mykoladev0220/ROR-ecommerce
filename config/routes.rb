@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   resources :cart_items, only: %i[create update destroy]
 
   resource :cart, only: %i[show update] do
-    post :checkout
+    get 'checkout', to: 'checkout#new'
+    post 'checkout', to: 'checkout#create'
   end
 
   resources :bought_items, only: [:index]

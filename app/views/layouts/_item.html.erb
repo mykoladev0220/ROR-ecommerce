@@ -1,6 +1,6 @@
   <article>
     <h3><%= link_to item.name, item_path(item) %></h3>
     <p><b>Price:</b> $<%= item.price %></p>
-    <p><b>Stock:</b> <%= item.quantity %> items left</p>
+    <p><b>Stock:</b> <code> <%= item.quantity %> items left </code></p>
     <p><b>Description:</b> <%= item.description %></p>
   </article>

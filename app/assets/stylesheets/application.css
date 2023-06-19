@@ -14,7 +14,21 @@
  *= require_self
  */
 
+/* Simplecss */
 /* Override some default simplecss metrics */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  width: 100%;
+}
 
 h3 {
   margin-top: 0.5em;
@@ -32,7 +46,6 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"],
 label[type="button"] {
-  margin: 0;
   padding: 0.5em 1em;
 }
 
@@ -48,12 +61,16 @@ mark {
   margin-bottom: 0.5em;
 }
 
-input[type="number"] {
-  margin-bottom: 0;
-}
-
 article {
   margin-bottom: 2em;
+}
+
+.mb {
+  margin-bottom: 1.5em;
+}
+
+.mt {
+  margin-top: 30em;
 }
 
 .spaced-out {
@@ -69,6 +86,19 @@ article {
   justify-content: space-between;
   gap: 1em;
   align-items: center;
+}
+
+.notice {
+  background: var(--accent-bg);
+  border: 2px solid var(--border);
+  border-radius: 5px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1rem;
 }
 
 .p-1 {

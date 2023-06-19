@@ -1,8 +1,9 @@
-  <h1>Cart</h1>
+<h1>Cart</h1>
 
-  <p class="notice">
-   Cart total: $<%= @cart.total %>
-  </p>
+<div class="notice">
+  Cart total: $<%= @cart.total %>
+  <%= link_to "Go to checkout", checkout_cart_path if @cart_items.any? %>
+</div>
 
 <% @cart_items.each do |cart_item| %>
   <article>
