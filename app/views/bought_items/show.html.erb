@@ -1,12 +1,12 @@
 <h1>Bought Items</h1>
 
 <div class="notice">
-  <p><b>Total Spending:</b> $<%= @bought_items.map { |bought_item| bought_item.subtotal }.sum %></p>
+  <p><b>Total Spending:</b> $<%= @total_spending %></p>
 </div>
 
 <% @bought_items.each do |bought_item| %>
   <article>
-    <%= render "layouts/relational_item", relational_item: bought_item %>
+    <%= render "layouts/partials/relational_item", relational_item: bought_item %>
     <p><b>Transaction date:</b> <%= bought_item.created_at.strftime("%H:%M - %B %d, %Y") %></p>
   </article>
 <% end %>

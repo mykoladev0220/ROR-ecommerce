@@ -1,9 +1,12 @@
+<%= turbo_stream_from "items" %>
+
 <hr>
-<%= render 'layouts/item', item: @item %>
+
+<%= render 'layouts/partials/item', item: @item %>
 
 <% if @cart_item.persisted? %>
   <p class="spaced-out"><code> Item already exists in the cart! </code> <%= link_to "Go to cart", cart_path %></p>
-  <%= render 'layouts/quantity_form', cart_item: @cart_item %>
+  <%= render 'layouts/partials/quantity_form', cart_item: @cart_item %>
 <% else %>
   <%= simple_form_for @cart_item, method: :post do |f| %>
     <%= f.hidden_field :item_id, value: @item.id %>

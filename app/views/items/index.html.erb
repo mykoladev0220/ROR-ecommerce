@@ -1,3 +1,5 @@
+<%= turbo_stream_from "items" %>
+
 <h1>All Items</h1>
 
 <div class="notice">
@@ -5,5 +7,5 @@
 </div>
 
 <% @items.each do |item| %>
-  <%= render "layouts/item", item: item %>
+  <%= render "layouts/partials/item", item: item %>
 <% end %>

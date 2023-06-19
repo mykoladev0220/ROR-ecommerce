@@ -1,15 +1,15 @@
 <h1>Cart</h1>
 
 <div class="notice">
-  <p><b> Cart total:</b> $<%= @cart.total %> </p>
+  <%= render 'layouts/partials/cart_total', cart_total: @cart_total %>
   
   <%= link_to "Go to checkout", checkout_cart_path if @cart_items.any? %>
 </div>
 
 <% @cart_items.each do |cart_item| %>
   <article>
-    <%= render "layouts/relational_item", relational_item: cart_item %>
+    <%= render "layouts/partials/relational_item", relational_item: cart_item %>
     <%= button_to "Remove from cart", cart_item, method: :delete %>
-    <%= render 'layouts/quantity_form', cart_item: cart_item %>
+    <%= render 'layouts/partials/quantity_form', cart_item: cart_item %>
   </article>
 <% end %>

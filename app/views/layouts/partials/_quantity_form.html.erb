@@ -1,6 +1,6 @@
 <section>
   <%= simple_form_for cart_item, html: { class: 'quantity-form' } do |f| %>
-    <%= f.input :quantity, as: :numeric, input_html: { min: '1', class: 'mb' } %>
+    <%= f.input :quantity, as: :numeric, input_html: { min: '1', class: 'mb quantity' } %>
     <%= f.button :submit, 'Update quantity' %>
   <% end %>
 </section>
