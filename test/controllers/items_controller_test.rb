@@ -11,16 +11,6 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get index and return JSON' do
-    get items_url, as: :json
-
-    result = JSON.parse(response.body)
-
-    assert_equal %w[items], result.keys
-    assert_instance_of Array, result['items']
-    assert_instance_of Integer, result['items'][0]['id']
-  end
-
   test 'should not get to show page if not signed in' do
     get item_url(items(:ruby_book))
 
@@ -32,6 +22,18 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     get item_url(items(:ruby_book))
 
     assert_response :success
+  end
+
+  # JSON response format test:
+
+  test 'should get index and return JSON' do
+    get items_url, as: :json
+
+    result = JSON.parse(response.body)
+
+    assert_equal %w[items], result.keys
+    assert_instance_of Array, result['items']
+    assert_instance_of Integer, result['items'][0]['id']
   end
 
   test 'should get to show page and return JSON' do
