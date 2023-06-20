@@ -46,6 +46,6 @@ class CheckoutControllerTest < ActionDispatch::IntegrationTest
       cart_cvv: '123'
     } }
 
-    assert_redirected_to bought_item_url(user)
+    assert_redirected_to bought_items_url
   end
 end

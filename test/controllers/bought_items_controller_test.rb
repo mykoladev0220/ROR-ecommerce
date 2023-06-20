@@ -14,7 +14,7 @@ class BoughtItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get show' do
-    get bought_item_url(user)
+    get bought_items_url(user)
 
     assert_response :success
   end

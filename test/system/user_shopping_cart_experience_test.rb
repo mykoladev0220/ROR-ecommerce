@@ -61,7 +61,7 @@ class UserShoppingCartExperienceTest < ApplicationSystemTestCase
     # Remove item from cart
     click_on 'Remove from cart'
 
-    assert_text 'Cart item deleted.'
+    assert_text 'Item removed from cart.'
     assert_text 'Cart | 0 items'
     assert_text 'Cart total: $0'
   end
