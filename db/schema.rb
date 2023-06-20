@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_616_220_126) do
+ActiveRecord::Schema[7.0].define(version: 20_230_619_222_939) do
   create_table 'bought_items', force: :cascade do |t|
     t.integer 'cart_id', null: false
     t.integer 'user_id', null: false
@@ -51,6 +51,12 @@ ActiveRecord::Schema[7.0].define(version: 20_230_616_220_126) do
     t.string 'description'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+  end
+
+  create_table 'jwt_denylist', force: :cascade do |t|
+    t.string 'jti', null: false
+    t.datetime 'exp', null: false
+    t.index ['jti'], name: 'index_jwt_denylist_on_jti'
   end
 
   create_table 'users', force: :cascade do |t|

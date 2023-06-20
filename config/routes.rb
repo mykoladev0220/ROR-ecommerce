@@ -2,8 +2,6 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
   root 'items#index'
 
   resources :items, only: %i[index show]
@@ -15,5 +13,5 @@ Rails.application.routes.draw do
     post 'checkout', to: 'checkout#create'
   end
 
-  resources :bought_items, only: :show
+  resources :bought_items, only: :index
 end
