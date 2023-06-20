@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class BoughtItemsController < ApplicationController
-  def show
+  def index
     @bought_items = current_user_bought_items
     @total_spending = @bought_items.map(&:subtotal).sum
   end
