@@ -23,7 +23,7 @@ class Cart < ApplicationRecord
 
   validates :user, presence: true
 
-  # TODO: Might use bulk insert here.
+  # Might use bulk insert here if we have a lot of cart items.
   def checkout
     CartItem.transaction do
       cart_items.each do |cart_item|

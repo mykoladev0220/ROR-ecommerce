@@ -15,9 +15,9 @@ class UserShoppingCartExperienceTest < ApplicationSystemTestCase
   end
 
   test 'should sign up' do
-    click_on 'Log out'
+    click_on 'Log Out'
 
-    click_on 'Sign up'
+    click_on 'Sign Up'
 
     fill_in 'user_email', with: 'minitest@test.com'
     fill_in 'user_password', with: 'password'
@@ -36,7 +36,7 @@ class UserShoppingCartExperienceTest < ApplicationSystemTestCase
     click_on 'Add item to cart'
 
     assert_text 'Item added to cart.'
-    assert_text 'Cart | 1 items'
+    assert_text 'Cart | 1 Items'
   end
 
   test 'should update cart item and remove cart item' do
@@ -44,10 +44,10 @@ class UserShoppingCartExperienceTest < ApplicationSystemTestCase
     click_on 'Add item to cart'
 
     assert_text 'Item added to cart.'
-    assert_text 'Cart | 1 items'
+    assert_text 'Cart | 1 Items'
 
     # Go to cart
-    click_on 'Cart | 1 items'
+    click_on 'Cart | 1 Items'
 
     assert_text 'Cart total: $50'
 
@@ -62,7 +62,7 @@ class UserShoppingCartExperienceTest < ApplicationSystemTestCase
     click_on 'Remove from cart'
 
     assert_text 'Item removed from cart.'
-    assert_text 'Cart | 0 items'
+    assert_text 'Cart | 0 Items'
     assert_text 'Cart total: $0'
   end
 
@@ -79,10 +79,10 @@ class UserShoppingCartExperienceTest < ApplicationSystemTestCase
     click_on 'Add item to cart'
 
     assert_text 'Item added to cart.'
-    assert_text 'Cart | 1 items'
+    assert_text 'Cart | 1 Items'
 
     # Go to cart
-    click_on 'Cart | 1 items'
+    click_on 'Cart | 1 Items'
 
     assert_text 'Cart total: $50'
 
@@ -97,7 +97,7 @@ class UserShoppingCartExperienceTest < ApplicationSystemTestCase
     click_on 'Submit Payment'
 
     assert_text 'Checkout successful.'
-    assert_text 'Cart | 0 items'
+    assert_text 'Cart | 0 Items'
     assert_text 'Bought Items'
     assert_text 'Total Spending: $50'
   end
