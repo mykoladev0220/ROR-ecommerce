@@ -6,36 +6,45 @@ class CartItemsController < ApplicationController
   attr_accessor :cart_item
 
   def create
-    @cart_item = CartItem.create(cart_item_params)
-    redirect_to_cart_with_flash_notice('Item added to cart.')
+    @cart_item = CartItem.new(cart_item_params)
+
+    if cart_item.save
+      render_response(info: 'Item added to cart.', path:)
+    else
+      render_response(errors:, path:)
+    end
   end
 
   def update
-    cart_item.update(quantity: params[:cart_item][:quantity])
-    redirect_to_cart_with_flash_notice('Cart item updated.')
+    if cart_item.update(quantity:)
+      render_response(info: 'Cart item updated.', path:)
+    else
+      render_response(errors:, path:)
+    end
   end
 
   def destroy
-    cart_item.remove_from_cart
-    redirect_to_cart_with_flash_notice('Cart item deleted.')
+    if cart_item.remove_from_cart
+      render_response(info: 'Item removed from cart.', path:)
+    else
+      render_response(errors:, path:)
+    end
   end
 
   private
 
   delegate :errors, to: :cart_item
 
-  def find_cart_item
-    @cart_item = if params[:id].present?
-                   CartItem.find_by(id: params[:id])
-                 else
-                   CartItem.find_by(cart_item_params.except(:quantity))
-                 end
+  def path
+    cart_path
   end
 
-  def redirect_to_cart_with_flash_notice(notice)
-    errors.any? ? flash[:alert] = errors.full_messages.join(', ') : flash[:notice] = notice
+  def find_cart_item
+    @cart_item = CartItem.find_by(id: params[:id]) || CartItem.find_by(cart_item_params.except(:quantity))
+  end
 
-    redirect_to cart_path
+  def quantity
+    @quantity = params[:cart_item][:quantity]
   end
 
   def cart_item_params
