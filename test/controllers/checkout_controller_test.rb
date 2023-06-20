@@ -48,4 +48,21 @@ class CheckoutControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to bought_items_url
   end
+
+  # JSON response format test:
+
+  test 'checkout create action should return JSON' do
+    post checkout_cart_url, params: { checkout: {
+      cart_number: '1234567890123456',
+      cart_expiration_month: '12',
+      cart_expiration_year: '2023',
+      shipping_address: 'address',
+      cart_cvv: '123'
+    } }, as: :json
+
+    result = JSON.parse(response.body)
+
+    assert_equal %w[message], result.keys
+    assert_equal 'Checkout successful.', result['message']
+  end
 end
