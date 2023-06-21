@@ -1,6 +1,8 @@
 # Rails E Commerce
 
-**Rails E Commerce** is a Fullstack Ruby on Rails e-commerce application that provides a shopping cart experience and serves as an API.
+This is a Fullstack Ruby on Rails e-commerce application that provides a shopping cart experience. It allows users to browse products, add them to their cart, modify their choices, and proceed to checkout. It also provides a RESTful API that can be used to interact with the app.
+
+Note: App can be further developed according to future needs or requirements.
 
 ![Screenshot 2023-06-19 at 15-54-06 RailsECommerce](https://github.com/egemen-dev/rails_e_commerce/assets/93445248/809bebfc-ac27-4306-9bbc-03eb705d84fa)
 
@@ -13,16 +15,9 @@
 <!--ts-->
 
 - [Key Features](#key-features)
-  - [User Authentication](#user-authentication)
-  - [Shopping Cart Functionality](#shopping-cart-functionality)
-  - [Real-time Stock Updates](#real-time-stock-updates)
-  - [Data Validations](#data-validations)
-  - [Thorough Testing](#thorough-testing)
-  - [Fullstack Rails App and RESTful API](#fullstack-rails-app-and-restful-api)
 - [Design and Implementation](#design-and-implementation)
 
 - [Getting started](#getting-started)
-  - [Installation, setup and running locally](#installation-setup-and-running-locally)
 - [API Usage](#api-usage)
   - [User](#user)
     - [Sign up](#sign-up)
@@ -43,9 +38,7 @@
 
 ---
 
-## Key Features
-
-The app allows users to add products to their virtual shopping cart while browsing the website. It enables users to keep track of their selected items, review and modify their choices, and proceed to checkout.
+# Key Features
 
 ### User Authentication:
 
@@ -54,6 +47,7 @@ The app allows users to add products to their virtual shopping cart while browsi
 ### Shopping Cart Functionality:
 
 - Allows users to easily add and remove products from their shopping cart.
+- Shows how many items are in the cart on the navigation bar.
 - Verifies product availability before adding items to the cart.
 - Provides the ability to update the quantity of products within the cart.
 - Displays comprehensive cart details, including product information and total cost.
@@ -74,16 +68,15 @@ The app allows users to add products to their virtual shopping cart while browsi
 ### Fullstack Rails App and RESTful API:
 
 - Utilizes the same routes and controllers for both web and API interactions.
-- Provides the complete functionality of a _fullstack RoR and RESTful API_ application.
+- Provides the complete functionality of a _fullstack_ RoR and _RESTful API_ application.
 
 ---
 
-## Design and Implementation
+# Design and Implementation
 
 ![modelstr](https://github.com/egemen-dev/rails_e_commerce/assets/93445248/dc5a433f-5f66-453c-9312-b486456f6fc2)
 
-
-I designed the app with a focus on simplicity, intuitiveness, and ease of use, following the Keep It Simple Stupid (KISS) design principle, to achieve this I applied the following design and implementation strategies:
+I designed the app with a focus on simplicity, following the Keep It Simple Stupid (KISS) design principle, to achieve this I applied the following design and implementation strategies:
 
 - For handling authentication, I integrated the Devise gem along with Devise-JWT to provide a secure and convenient authentication system. This allowed users to authenticate and access protected resources effortlessly.
 
@@ -95,12 +88,11 @@ I designed the app with a focus on simplicity, intuitiveness, and ease of use, f
 
 - For testing purposes, I employed MiniTest and Capybara to ensure the quality and reliability of the application through unit, controller, and system testing.
 
-
 I wanted to make the app as simple as possible, so I decided to use the same controllers and routes for json requests and html requests. Instead of creating a new module for the API, I leveraged the Rails built-in functionality to handle both type of requests at the same time.
 
 ---
 
-## Getting started
+# Getting started
 
 ### Installation, setup and running locally
 
@@ -111,26 +103,9 @@ I wanted to make the app as simple as possible, so I decided to use the same con
 - Go to `localhost:3000` in web browser to access the application.
 - Run `rails test:all` to run all the tests.
 
-<!--
-Rails.application.routes.draw do
-  devise_for :users
-  root 'items#index'
+# API Usage
 
-  resources :items, only: %i[index show]
-
-  resources :cart_items, only: %i[create update destroy]
-
-  resource :cart, only: %i[show update] do
-    get 'checkout', to: 'checkout#new'
-    post 'checkout', to: 'checkout#create'
-  end
-
-  resources :bought_items, only: :index
-end -->
-
-## API Usage
-
-To test the API, you can use POSTMAN or any other API testing tool.
+To test the API, you can use POSTMAN or any other API testing tool. I used Thunder Client, which is a VS Code extension.
 
 Successful authentication returns a Bearer token. That must be included in the header of all subsequent requests.
 
@@ -138,7 +113,7 @@ The app has the following API endpoints:
 
 ## User
 
-### Sign up
+#### Sign up
 
 ```
 Action: POST
@@ -158,7 +133,7 @@ Parameters:
 Response: Created object will be returned and a Bearer token will be included in the header.
 ```
 
-### Sign in
+#### Sign in
 
 ```
 Action: POST
@@ -179,7 +154,7 @@ Response: A Bearer token will be included in the header.
 
 ## Items
 
-### Get all items
+#### Get all items
 
 ```
 Action: GET
@@ -212,7 +187,7 @@ Example response:
 ]
 ```
 
-### Get an item
+#### Get an item
 
 ```
 Action: GET
@@ -236,7 +211,7 @@ Example response:
 
 ## Cart
 
-### Show cart
+#### Show cart
 
 ```
 Action: GET
@@ -262,7 +237,7 @@ Example response:
 }
 ```
 
-### Add item to cart
+#### Add item to cart
 
 ```
 Action: POST
@@ -278,7 +253,7 @@ Parameters:
   }
 }
 
-* *Returns the cart item and the message.
+* Returns the cart item and the message.
 
 Example response:
 
@@ -295,7 +270,7 @@ Example response:
 }
 ```
 
-### Update cart item
+#### Update cart item
 
 ```
 Action: PATCH
@@ -329,7 +304,7 @@ Example response:
 }
 ```
 
-### Delete cart item
+#### Delete cart item
 
 ```
 Action: DELETE
@@ -351,7 +326,7 @@ Example response:
 }
 ```
 
-### Checkout
+#### Checkout
 
 ```
 Action: POST
@@ -381,7 +356,7 @@ Example response:
 
 ## Bought Items
 
-### Get bought items
+#### Get bought items
 
 ```
 Action: GET
