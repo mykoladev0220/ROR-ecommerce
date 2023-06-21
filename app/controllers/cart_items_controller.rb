@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CartItemsController < ApplicationController
-  before_action :find_cart_item
+  before_action :find_cart_item, only: %i[update destroy]
 
   attr_accessor :cart_item
 
@@ -40,7 +40,7 @@ class CartItemsController < ApplicationController
   end
 
   def find_cart_item
-    @cart_item = CartItem.find_by(id: params[:id]) || CartItem.find_by(cart_item_params.except(:quantity))
+    @cart_item = CartItem.find(params[:id])
   end
 
   def quantity

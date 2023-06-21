@@ -36,6 +36,6 @@ class CheckoutController < ApplicationController
     checkout_params[:cart_number]&.length == 16 &&
       checkout_params[:cart_cvv]&.length == 3 &&
       checkout_params[:cart_expiration_year]&.length == 4 &&
-      checkout_params[:cart_expiration_month]&.length < 3
+      checkout_params[:cart_expiration_month]&.length&.between?(1, 2)
   end
 end
