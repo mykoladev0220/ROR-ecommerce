@@ -2,6 +2,10 @@
 
 **Rails E Commerce** is a Fullstack Ruby on Rails e-commerce application that provides a shopping cart experience and serves as an API.
 
+![Screenshot 2023-06-19 at 15-54-06 RailsECommerce](https://github.com/egemen-dev/rails_e_commerce/assets/93445248/809bebfc-ac27-4306-9bbc-03eb705d84fa)
+
+![Screenshot 2023-06-19 at 01-50-34 RailsECommerce](https://github.com/egemen-dev/rails_e_commerce/assets/93445248/dec1fe2d-fef6-4ca3-8376-099ea6aa52ea)
+
 ---
 
 # Table of contents
@@ -16,8 +20,6 @@
   - [Thorough Testing](#thorough-testing)
   - [Fullstack Rails App and RESTful API](#fullstack-rails-app-and-restful-api)
 - [Design and Implementation](#design-and-implementation)
-
-  - [Why same controllers and routes for json requests and html requests?](#why-same-controllers-and-routes-for-json-requests-and-html-requests)
 
 - [Getting started](#getting-started)
   - [Installation, setup and running locally](#installation-setup-and-running-locally)
@@ -78,7 +80,8 @@ The app allows users to add products to their virtual shopping cart while browsi
 
 ## Design and Implementation
 
-!!! I will add the images here. !!!
+![modelstr](https://github.com/egemen-dev/rails_e_commerce/assets/93445248/dc5a433f-5f66-453c-9312-b486456f6fc2)
+
 
 I designed the app with a focus on simplicity, intuitiveness, and ease of use, following the Keep It Simple Stupid (KISS) design principle, to achieve this I applied the following design and implementation strategies:
 
@@ -92,9 +95,8 @@ I designed the app with a focus on simplicity, intuitiveness, and ease of use, f
 
 - For testing purposes, I employed MiniTest and Capybara to ensure the quality and reliability of the application through unit, controller, and system testing.
 
-### Why same controllers and routes for json requests and html requests?
 
-I wanted to make the app as simple as possible, so I decided to use the same controllers and routes for json requests and html requests. Instead of creating a new module for the API, I leveraged the Rails built-in functionality to handle both type of requests at the same time. As the app grows, I'd probably need to create a new module for the API according to needs, but for now, I think it is fine to use the same controllers and routes for both types of requests. More importantly.
+I wanted to make the app as simple as possible, so I decided to use the same controllers and routes for json requests and html requests. Instead of creating a new module for the API, I leveraged the Rails built-in functionality to handle both type of requests at the same time.
 
 ---
 
