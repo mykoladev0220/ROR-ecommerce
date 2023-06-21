@@ -97,10 +97,16 @@ I wanted to make the app as simple as possible, so I decided to use the same con
 ### Installation, setup and running locally
 
 - Make sure you have ruby 3.2.1 and rails 7.0.5 installed.
-- Git clone the repo and run `bundle install` to install all the gems.
+- Git clone the repo and `cd` into repo run `bundle install` to install all the gems.
+- Delete the existing `config/credentials.yml.enc` and `config/master.key` files.
+- Run `rails credentials:edit` to create a new credentials and master key file.
+- Run `bundle exec rake secret` to generate a new secret key.
+- Run `EDITOR="code --wait" rails credentials:edit` to open the credentials file in code editor.
+- Add `devise_jwt_secret_key: <secret_key>` to the credentials file and close the file to save changes.
 - Run `rails db:setup` to create the database, load the schema, and load seed data.
 - Run `rails s` to run the local server.
 - Go to `localhost:3000` in web browser to access the application.
+- Use any User email and password from the seed data or sign up to create a new user.
 - Run `rails test:all` to run all the tests.
 
 # API Usage
