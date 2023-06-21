@@ -4,16 +4,12 @@ This is a Fullstack Ruby on Rails e-commerce application that provides a shoppin
 
 Note: App can be further developed according to future needs or requirements.
 
-![Screenshot 2023-06-19 at 15-54-06 RailsECommerce](https://github.com/egemen-dev/rails_e_commerce/assets/93445248/809bebfc-ac27-4306-9bbc-03eb705d84fa)
-
-![Screenshot 2023-06-19 at 01-50-34 RailsECommerce](https://github.com/egemen-dev/rails_e_commerce/assets/93445248/dec1fe2d-fef6-4ca3-8376-099ea6aa52ea)
-
 ---
 
 # Table of contents
 
 <!--ts-->
-
+- [Screenshots](#screenshots)
 - [Key Features](#key-features)
 - [Design and Implementation](#design-and-implementation)
 
@@ -37,6 +33,15 @@ Note: App can be further developed according to future needs or requirements.
 <!--te-->
 
 ---
+
+# Screenshots
+
+Auto dark mode according to your browser current mode.
+
+![Screenshot 2023-06-19 at 15-54-06 RailsECommerce](https://github.com/egemen-dev/rails_e_commerce/assets/93445248/809bebfc-ac27-4306-9bbc-03eb705d84fa)
+
+![Screenshot_2023-06-21_15-34-36](https://github.com/egemen-dev/rails_e_commerce/assets/93445248/d0c589a9-b685-42e5-9d7f-f70f6268fbaf)
+
 
 # Key Features
 
