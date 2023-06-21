@@ -38,9 +38,9 @@ Note: App can be further developed according to future needs or requirements.
 
 Auto dark mode according to your browser current mode.
 
-![Screenshot 2023-06-19 at 15-54-06 RailsECommerce](https://github.com/egemen-dev/rails_e_commerce/assets/93445248/809bebfc-ac27-4306-9bbc-03eb705d84fa)
+![Screenshot 2023-06-19 at 15-54-06 RailsECommerce](https://github.com/egemen-dev/rails_e_commerce/assets/93445248/184136f9-4a65-47f2-8858-21f4fde52706)
 
-![Screenshot_2023-06-21_15-34-36](https://github.com/egemen-dev/rails_e_commerce/assets/93445248/d0c589a9-b685-42e5-9d7f-f70f6268fbaf)
+![Screenshot_2023-06-21_15-34-36](https://github.com/egemen-dev/rails_e_commerce/assets/93445248/a294c696-1f67-4430-9b2f-7030a708a2e3)
 
 
 # Key Features
@@ -79,7 +79,8 @@ Auto dark mode according to your browser current mode.
 
 # Design and Implementation
 
-![modelstr](https://github.com/egemen-dev/rails_e_commerce/assets/93445248/dc5a433f-5f66-453c-9312-b486456f6fc2)
+![modelstr](https://github.com/egemen-dev/rails_e_commerce/assets/93445248/b5030605-0386-41da-82ff-714d2d6f4a0d)
+
 
 I designed the app with a focus on simplicity, following the Keep It Simple Stupid (KISS) design principle, to achieve this I applied the following design and implementation strategies:
 
