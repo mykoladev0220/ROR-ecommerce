@@ -31,11 +31,17 @@ class CheckoutController < ApplicationController
           .permit(:cart_number, :cart_expiration_month, :cart_expiration_year, :shipping_address, :cart_cvv)
   end
 
-  # Dummy validation for basic checkout simulation.
+  # NOTE: Dummy validation for basic checkout simulation and it shouldn't be used in production.
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
   def validate_cart_params
     checkout_params[:cart_number]&.length == 16 &&
       checkout_params[:cart_cvv]&.length == 3 &&
       checkout_params[:cart_expiration_year]&.length == 4 &&
       checkout_params[:cart_expiration_month]&.length&.between?(1, 2)
   end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
 end
